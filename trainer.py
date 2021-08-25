@@ -1,5 +1,5 @@
 from medsrgan import Generator, Discriminator, FeatureExtractor
-from medsrgan_dataset import GAN_Data
+from dataset import GAN_Data
 from tqdm import tqdm
 import os
 import torch
