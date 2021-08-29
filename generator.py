@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torch
+import torchvision.models as models
 
 
 class RWMAB(nn.Module):
@@ -43,7 +44,7 @@ class ShortResidualBlock(nn.Module):
 
 
 class Generator(nn.Module):
-    def __init__(self, in_channels, blocks=8):
+    def __init__(self, in_channels=3, blocks=8):
         super().__init__()
 
         self.conv = nn.Conv2d(in_channels, 64, (3, 3), stride=1, padding=1)
@@ -58,8 +59,8 @@ class Generator(nn.Module):
             nn.Conv2d(128, 256, (3, 3), stride=1, padding=1),
             nn.PixelShuffle(2),
             nn.Conv2d(64, 256, (3, 3), stride=1, padding=1),
-            # nn.PixelShuffle(2), # Add if output is 4x the input
-            nn.Conv2d(256, 3, (1, 1), stride=1, padding=0),  # Change 256 -> 64
+            nn.PixelShuffle(2),  # Remove if output is 2x the input
+            nn.Conv2d(64, 3, (1, 1), stride=1, padding=0),  # Change 64 -> 256
             nn.Sigmoid(),
         )
 
