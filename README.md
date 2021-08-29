@@ -12,5 +12,8 @@ generator = Generator(
       blocks= 8
 )
 
-discriminator = Discriminator(in_channels= 3)
+discriminator = Discriminator(
+      in_channels= 3, 
+      img_size= (256, 256)
+)
 ```
