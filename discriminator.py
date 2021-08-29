@@ -1,3 +1,23 @@
+import torch.nn as nn
+import torch
+import torchvision.models as models
+
+
+class D_Block(nn.Module):
+    def __init__(self, in_channels, out_channels, stride=2):
+        super().__init__()
+
+        self.layer = nn.Sequential(
+            nn.Conv2d(in_channels, out_channels, (3, 3), stride=stride, padding=1),
+            nn.BatchNorm2d(out_channels),
+            nn.LeakyReLU(),
+        )
+
+    def forward(self, x):
+
+        return self.layer(x)
+
+
 class Discriminator(nn.Module):
     def __init__(self, img_size, in_channels=3):
         super().__init__()
