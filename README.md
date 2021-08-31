@@ -5,7 +5,8 @@
 
 ```python
 import torch
-from generator import MLPMixer
+from generator import Generator
+from discriminator import Discriminator
 
 generator = Generator(
       in_channels= 3,
